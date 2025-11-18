@@ -25,6 +25,11 @@ namespace OneM.PoolSystem
         public uint Size = 4;
 
         /// <summary>
+        /// Global event invoked when a Poolable instance is placed.
+        /// </summary>
+        public static event Action<Poolable> OnInstancePlaced;
+
+        /// <summary>
         /// The current number of poolable instances.
         /// </summary>
         public int Count => pool.CountAll;
@@ -101,7 +106,11 @@ namespace OneM.PoolSystem
         {
             if (data.Parent == null) data.Parent = GlobalParent;
             internalData = data;
-            return pool.Get(); // Calls CreateInstance and/or OnGetInstance functions.
+
+            var instance = pool.Get(); // Calls CreateInstance and/or OnGetInstance functions.
+            OnInstancePlaced?.Invoke(instance);
+
+            return instance;
         }
 
         internal void SendBack(Poolable poolable) => pool.Release(poolable);
