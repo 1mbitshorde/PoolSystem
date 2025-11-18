@@ -1,19 +1,19 @@
 {
-  "name": "com.1mbitshorde.[packagename]",
-  "displayName": "1M Bits Horde-[PackageName]",
+  "name": "com.1mbitshorde.pool-system",
+  "displayName": "1M Bits Horde-Pool System",
   "version": "0.1.0",
   "unity": "6000.1",
-  "description": "This package contains [...].",
+  "description": "This package contains a PoolSystem to use with prefabs.",
   "keywords": [
-    "",
-    ""
+    "Pool",
+    "Prefabs"
   ],
   "dependencies": {},
-  "homepage": "https://github.com/1mbitshorde/[PACKAGE]#readme",
+  "homepage": "https://github.com/1mbitshorde/PoolSystem#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/1mbitshorde/[PACKAGE].git"
+    "url": "https://github.com/1mbitshorde/PoolSystem.git"
   },
-  "documentationUrl": "https://github.com/1mbitshorde/[PACKAGE]#readme",
-  "changelogUrl": "https://github.com/1mbitshorde/[PACKAGE]/CHANGELOG.md"
+  "documentationUrl": "https://github.com/1mbitshorde/PoolSystem#readme",
+  "changelogUrl": "https://github.com/1mbitshorde/PoolSystem/CHANGELOG.md"
 }
