@@ -1,0 +1,16 @@
+{
+    "name": "OneM.PoolSystem",
+    "rootNamespace": "OneM.PoolSystem",
+    "references": [
+        "GUID:756f810f17dfec54abc9b3899a63acdf"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
