@@ -1,0 +1,19 @@
+{
+  "name": "com.1mbitshorde.[packagename]",
+  "displayName": "1M Bits Horde-[PackageName]",
+  "version": "0.1.0",
+  "unity": "6000.1",
+  "description": "This package contains [...].",
+  "keywords": [
+    "",
+    ""
+  ],
+  "dependencies": {},
+  "homepage": "https://github.com/1mbitshorde/[PACKAGE]#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1mbitshorde/[PACKAGE].git"
+  },
+  "documentationUrl": "https://github.com/1mbitshorde/[PACKAGE]#readme",
+  "changelogUrl": "https://github.com/1mbitshorde/[PACKAGE]/CHANGELOG.md"
+}
