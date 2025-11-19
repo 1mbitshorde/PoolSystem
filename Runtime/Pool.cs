@@ -158,7 +158,12 @@ namespace OneM.PoolSystem
         }
 
         private void OnReleaseInstance(Poolable poolable) => SendBackAfterOneFrame(poolable);
-        private void OnDestroyInstance(Poolable poolable) => Destroy(poolable.gameObject);
+
+        private void OnDestroyInstance(Poolable poolable)
+        {
+            if (poolable == null) return;
+            Destroy(poolable.gameObject);
+        }
 
         private async void SendBackAfterOneFrame(Poolable poolable)
         {
