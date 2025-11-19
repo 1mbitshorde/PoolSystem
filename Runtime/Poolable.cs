@@ -3,7 +3,7 @@ using UnityEngine;
 namespace OneM.PoolSystem
 {
     /// <summary>
-    /// Poolable component used by a <see cref="PoolSystem"/>.
+    /// Poolable component used by a <see cref="Pool"/> component.
     /// </summary>
     /// <remarks>
     /// When disabled, the GameObject will be sent back to its Pool System.
@@ -12,13 +12,13 @@ namespace OneM.PoolSystem
     public sealed class Poolable : MonoBehaviour
     {
         /// <summary>
-        /// The Pool System using this component.
+        /// The Pool owner this component.
         /// </summary>
-        public PoolSystem Pool { get; internal set; }
+        public Pool Owner { get; internal set; }
 
         private void OnDisable()
         {
-            if (Pool) Pool.SendBack(this);
+            if (Owner) Owner.SendBack(this);
         }
 
         internal void Place(Transform parent) => Place(new PoolableData(parent));

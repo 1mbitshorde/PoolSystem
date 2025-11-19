@@ -1,14 +1,14 @@
 # Pool System
 
-A Pool System (also known as Object Pooling) is an optimization technique to relieve the CPU when creating and destroying a lot of commonly used GameObjects,  saving memory and CPU cycle time.
+A Pool System (also known as Object Pooling) is an optimization technique to relieve the CPU when creating and destroying a lot of commonly used GameObjects, saving memory and CPU cycle time.
 
-The Pool System uses internally the [UnityEngine.Pool API](https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Pool.ObjectPool_1.html), a stack-based ObjectPool to track objects with the object pool pattern.
+The Pool uses internally the [UnityEngine.Pool API](https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Pool.ObjectPool_1.html), a stack-based ObjectPool to track objects with the object pool pattern.
 
-At your request, the Pool System lazily instantiates GameObjects at runtime using only one prefab, i.e. the prefab instance is only created when used until it reaches its maximum size. After that, the Pool will recycle the already created prefab instances. At certain point, those instances must be disabled by any component and sent back to the pool to be used again.
+At your request, the Pool lazily instantiates GameObjects at runtime using only one prefab. This prefab instance is only created when used until it reaches its maximum size. After that, the Pool will recycle the already created instances. At certain point, those instances must be disabled by any component and sent back to the Pool to be reused again.
 
-GameObjects used by the Pool System must have the [Poolable](/Runtime/Poolable.cs) component attached on it. When disabled, the GameObject will be sent back to its Pool System to be used again, improving memory usage.
+GameObjects used by the Pool System must have the [Poolable](/Runtime/Poolable.cs) component attached on it. When disabled, the GameObject will be sent back to its Pool to be reused again, improving memory usage.
 
-If no parent is set when placing the pool instance, it will be placed at global GameObject **ActivePoolableObjects**. After that will be placed again as a child of the Pool System Game Object.
+If no parent is set when placing the instance, it will be placed at global GameObject **ActivePoolableObjects**. After that will be placed again as a child of the Pool Game Object.
 
 ![Pool System Inspector](/Docs~/inspector.gif) 
 
@@ -22,12 +22,12 @@ To disable a Poolable GameObject, you can use any of the [Disablers Scripts](/Ru
 * Attach the [Poolable](/Runtime/Poolable.cs) component
 * Attach any component of the [Disablers Scripts](/Runtime/Disablers/)
 
-### Creating a Pool System
+### Creating a Pool
 
 * Create a prefab (optional)
-* Attach a [PoolSystem](/Runtime/PoolSystem.cs) component and set:
+* Attach a [Pool](/Runtime/Pool.cs) component and set:
 	* **Prefab**: the prefab asset with the ```Poolable``` component you just created.
-	* **Size**: The Pool System size. Items will be created even above this value.
+	* **Size**: The Pool size. Items will be created even above this value.
 
 The pool will always return an item even though reaching its max size. Remaining items will be destroyed after used.
 
@@ -43,9 +43,9 @@ namespace YourGameNamespace
 {
 	public sealed class PoolSystemTester : MonoBehaviour 
 	{
-		public PoolSystem poolSystem;
+		public Pool pool;
 
-		public void PlaceAtOrigin() => poolSystem.Place(Vector3.zero);
+		public void PlaceAtOrigin() => pool.Place(Vector3.zero);
 		// or any other Place function
 	}
 }

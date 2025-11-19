@@ -6,8 +6,8 @@ using ActionCode.Attributes;
 namespace OneM.PoolSystem
 {
     /// <summary>
-    /// Pool System for <see cref="Poolable"/> components. 
-    /// Use a Prefab with a <see cref="Poolable"/> component attached on it.    /// 
+    /// Pool for <see cref="Poolable"/> components. 
+    /// Use a Prefab with a <see cref="Poolable"/> component attached on it. 
     /// </summary>
     /// <remarks>
     /// The pool will always return an item even though reaching its max size. 
@@ -16,12 +16,12 @@ namespace OneM.PoolSystem
     /// of items you need to use at runtime.
     /// </remarks>
 	[DisallowMultipleComponent]
-    public sealed class PoolSystem : MonoBehaviour
+    public sealed class Pool : MonoBehaviour
     {
         [AssetsOnly(typeof(GameObject))]
-        [Tooltip("The Pool System Prefab. Put here any Prefab with a Poolable component attached on it.")]
+        [Tooltip("The Pool Prefab. Put here any Prefab with a Poolable component attached on it.")]
         public GameObject Prefab;
-        [Min(1), Tooltip("The Pool System size. Items will be created even above this value.")]
+        [Min(1), Tooltip("The Pool size. Items will be created even above this value.")]
         public uint Size = 4;
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace OneM.PoolSystem
 
             var poolable = instance.GetComponent<Poolable>();
 
-            poolable.Pool = this;
+            poolable.Owner = this;
             poolable.gameObject.name = $"{Prefab.name}_{Count:D2}";
 
             return poolable;

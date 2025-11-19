@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - FramesDisabler component
 - BecameInvisibleDisabler component
 - AnimationDisabler component
-- PoolSystem component
+- Pool component
 - Poolable component
 - PoolableData
 - Attributes package dependency
