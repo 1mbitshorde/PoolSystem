@@ -47,10 +47,13 @@ namespace OneM.PoolSystem
         private ObjectPool<Poolable> pool;
         private PoolableData internalData;
 
-        private static Transform GlobalParent => lazyGlobalParent.Value;
-        private static readonly Lazy<Transform> lazyGlobalParent = new(FindOrCreateGlobalParent);
+        private static Transform GlobalParent { get; set; }
 
-        private void Awake() => InitializePool();
+        private void Awake()
+        {
+            CheckGlobalParent();
+            InitializePool();
+        }
 
         /// <summary>
         /// Places a <see cref="Poolable"/> component using the given placement position, rotation and scale.
@@ -168,6 +171,12 @@ namespace OneM.PoolSystem
             // OnDestroyInstance may be called if pool size is smaller than current pool instances
             var isAbleToPlaceBack = poolable && !poolable.gameObject.activeInHierarchy;
             if (isAbleToPlaceBack) poolable.Place(transform);
+        }
+
+        private static void CheckGlobalParent()
+        {
+            if (GlobalParent != null) return;
+            GlobalParent = FindOrCreateGlobalParent();
         }
 
         private static Transform FindOrCreateGlobalParent()
